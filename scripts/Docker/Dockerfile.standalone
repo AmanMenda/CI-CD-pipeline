@@ -1,0 +1,19 @@
+# syntax=docker/dockerfile:1
+
+# Using a Rust container as both the build and the runtime environment to keep it 
+# simple. Can be built using:
+# docker build -t rust-dockerfile-standalone -f Dockerfile.standalone ../../sample
+# the last parameter being the directory whose contents are going to be copied into
+# the build
+
+FROM rust:1.67
+
+WORKDIR /usr/src/myapp
+COPY . .
+
+# Used to build the app and install the resulting binary
+# in the container's bin path. That's why the binary is
+# available to be run directly using its name
+RUN cargo install --path .
+
+CMD ["sample"]
