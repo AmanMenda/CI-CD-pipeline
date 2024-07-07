@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-# This Dockerfile can be used as a boilerplate which can be
+# This Dockerfile can be used as a boilerplate. It can be
 # extended without reinventing common functionalities.
 # The following commands will be executed in the downstream
 # image and therefore, the container need to be launched using
