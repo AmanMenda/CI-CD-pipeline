@@ -18,25 +18,25 @@ jenkins:
             entries:
               - user: ${JENKINS_ADMIN_ID}
 
-# credentials:
-#   system:
-#     domainCredentials:
-#       - credentials:
-#         - basicSSHUserPrivateKey:
-#             scope: GLOBAL
-#             id: github-ci-key
-#             username: Admin
-#             passphrase: ${SSH_KEY_PASSWORD}
-#             description: "SSH passphrase with private key file. Private key provided"
-#             privateKeySource:
-#               directEntry:
-#                 privateKey: ${SSH_PRIVATE_KEY}
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+        - basicSSHUserPrivateKey:
+            scope: GLOBAL
+            id: github-ci-key
+            username: Admin
+            passphrase: ${GIT_SSH_KEY_PASSWORD}
+            description: "SSH passphrase with private key file. Private key provided"
+            privateKeySource:
+              directEntry:
+                privateKey: ${GIT_SSH_PRIVATE_KEY}
 
 security:
   globalJobDslSecurityConfiguration:
     useScriptSecurity: false
-#   gitHostKeyVerificationConfiguration:
-#     sshHostKeyVerificationStrategy: "acceptFirstConnectionStrategy"
+  gitHostKeyVerificationConfiguration:
+    sshHostKeyVerificationStrategy: "acceptFirstConnectionStrategy"
 
-# jobs:
-#   - file: "/var/jenkins_home/pipeline.groovy"
+jobs:
+  - file: "/var/jenkins_home/scheduledBuildAndTest.groovy"
