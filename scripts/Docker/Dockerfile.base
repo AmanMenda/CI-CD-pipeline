@@ -1,0 +1,13 @@
+# syntax=docker/dockerfile:1
+
+# This Dockerfile can be used as a boilerplate which can be
+# extended without reinventing common functionalities.
+# The following commands will be executed in the downstream
+# image and therefore, the container need to be launched using
+# the downstream image.
+
+FROM rust:1.67
+
+ONBUILD WORKDIR /usr/src/myapp
+ONBUILD COPY . .
+ONBUILD RUN cargo install --path .
