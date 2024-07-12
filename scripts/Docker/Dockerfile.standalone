@@ -8,8 +8,9 @@
 
 FROM rust:1.67
 
-WORKDIR /usr/src/myapp
-COPY . .
+COPY . /app
+
+WORKDIR /app
 
 # Used to build the app and install the resulting binary
 # in the container's bin path. That's why the binary is

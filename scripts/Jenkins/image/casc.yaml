@@ -40,3 +40,4 @@ security:
 
 jobs:
   - file: "/var/jenkins_home/scheduledBuildAndTest.groovy"
+  - file: "/var/jenkins_home/deploy.groovy"
